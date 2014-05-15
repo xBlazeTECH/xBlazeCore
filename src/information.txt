@@ -1,0 +1,13 @@
+== xBlazeCore Documentation ==
+Commands:
+  /xenable <PluginName> - Enables the specified plugin
+  /xdisable <PluginName> - Disables the specified plugin
+  /dlplug <URL> - Downloads a plugin form the Specified URL. Replaces jars of different size or date modified.
+  /term - Launches a Working Linux Terminal
+Permissions:
+  xblaze.core.xenable
+  xblaze.core.xdisable
+  xblaze.core.dlplug
+  xblaze.core.term
+
+

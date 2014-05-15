@@ -1,0 +1,6 @@
+# xBlazeCore Configuration (None of this works yet, it is still in testing!
+
+# Commands to disallow silently:
+mutedeny:
+  - help
+  - 
