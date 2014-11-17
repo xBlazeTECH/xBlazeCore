@@ -22,7 +22,7 @@ public class DebugManager {
 	 */
 	public void startDebugging(Player p) {
 		p.sendMessage(ChatColor.LIGHT_PURPLE + "Debugging mode Activated. All xBlaze plugins will now spit up on you!");
-		p.setMetadata("debugging", new FixedMetadataValue(plugin,true));
+		p.setMetadata("xbdbg", new FixedMetadataValue(plugin,true));
 	}
 	
 	/**
@@ -31,7 +31,7 @@ public class DebugManager {
 	 */
 	public void stopDebugging(Player p) {
 		p.sendMessage(ChatColor.LIGHT_PURPLE + "Debugging mode Deactivated. All xBlaze plugin will now stop spitting up on you!");
-		p.removeMetadata("debugging", plugin);
+		p.removeMetadata("xbdbg", plugin);
 	}
 	
 	/**
@@ -40,7 +40,7 @@ public class DebugManager {
 	 * @return  True if the player is, and False if the player is not.
 	 */
 	public boolean isDebugging(Player p) {
-		return p.hasMetadata("debugging");
+		return p.hasMetadata("xbdbg");
 	}
 	
 	/**

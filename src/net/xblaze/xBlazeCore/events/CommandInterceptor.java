@@ -1,7 +1,7 @@
 package net.xblaze.xBlazeCore.events;
 
 import net.xblaze.xBlazeCore.BlazeCore;
-import net.xblaze.xBlazeCore.api.nms.v1_7_R2.NmsManager;
+import net.xblaze.xBlazeCore.api.nms.NmsManager;
 import net.xblaze.xBlazeCore.api.util.DebugManager;
 
 import org.bukkit.ChatColor;

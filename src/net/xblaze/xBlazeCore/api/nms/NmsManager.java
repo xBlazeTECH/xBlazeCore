@@ -1,7 +1,4 @@
-package net.xblaze.xBlazeCore.api.nms.v1_7_R2;
-
-import net.xblaze.xBlazeCore.api.nms.GenericFancyMessage;
-import net.xblaze.xBlazeCore.api.nms.GenericNmsManager;
+package net.xblaze.xBlazeCore.api.nms;
 
 public class NmsManager implements GenericNmsManager {
 
