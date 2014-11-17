@@ -13,9 +13,7 @@
 	  <javac srcdir="src/" destdir="bin/" debug="on" debuglevel="lines,vars,source" includeantruntime="false" encoding="Cp1252" classpathref="classpath">
       <classpath>
         <pathelement path="lib/" />
-        <pathelement location="lib/craftbukkit-1.7.5-R0.1.jar" />
-        <pathelement location="lib/craftbukkit-1.7.8-R0.1.jar" />
-        <pathelement location="lib/craftbukkit-1.7.9-R0.1.jar" />
+        <pathelement location="lib/spigot-1.7.9-R0.2-SNAPSHOT.jar" />
       </classpath>
     </javac>
   </target>
