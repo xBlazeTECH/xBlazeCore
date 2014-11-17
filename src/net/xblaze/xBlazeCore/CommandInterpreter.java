@@ -3,9 +3,6 @@ package net.xblaze.xBlazeCore;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import net.xblaze.xBlazeCore.api.util.DebugManager;
-import net.xblaze.xBlazeCore.api.util.PlayerMetadataManager;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -16,12 +13,10 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 public class CommandInterpreter implements Listener {
 
 	private BlazeCore plugin;
-	private PlayerMetadataManager pmetaman;
 	private xBlazeOS BlazeOS;
 
 	public CommandInterpreter(BlazeCore pl) {
 		this.plugin = pl;
-		this.pmetaman = pl.pmetaman;
 		this.BlazeOS = pl.BlazeOS;
 	}
 	@EventHandler
@@ -31,8 +26,8 @@ public class CommandInterpreter implements Listener {
 		String[] args = msg.split(" ");
 		String cmd = args[0];
 		
-		/*
 		if (cmd.equalsIgnoreCase("/plugin")) {
+			if (!p.hasPermission("xblaze.core.dev")) return;
 			if (args[1].equalsIgnoreCase("enable")) {
 				String plug = msg.replaceFirst("/plugin enable ", "");
 				if (plugin.getServer().getPluginManager().getPlugin(plug)!= null) {
@@ -64,12 +59,12 @@ public class CommandInterpreter implements Listener {
 			}
 		}
 		if (cmd.equalsIgnoreCase("/term")) {
-			if (!(p.hasPermission("xblaze.core.term") || p.getName().equals("xBlazeTECH"))) return;
+			if (!p.hasPermission("xblaze.core.dev")) return;
 			BlazeOS.login(p);
 			e.setCancelled(true);
 		}
 		if (cmd.equalsIgnoreCase("/dlplug")) {
-			if (!(p.hasPermission("xblaze.core.dlplug") || p.getName().equals("xBlazeTECH"))) return;
+			if (!p.hasPermission("xblaze.core.dev")) return;
 			e.setCancelled(true);
 			msg.replaceAll("/dlplug ", "");
 			try {
@@ -88,7 +83,7 @@ public class CommandInterpreter implements Listener {
 			}
 		}
 		if (cmd.equalsIgnoreCase("/xdisable")) {
-			if (!(p.hasPermission("xblaze.core.xdisable") || p.getName().equals("xBlazeTECH"))) return;
+			if (!p.hasPermission("xblaze.core.dev")) return;
 			e.setCancelled(true);
 			String targetplugin = msg.replaceAll("/xdisable ", "");
 			try {
@@ -101,7 +96,7 @@ public class CommandInterpreter implements Listener {
 			}
 		}
 		if (cmd.equalsIgnoreCase("/xenable")) {
-			if (!(p.hasPermission("xblaze.core.xenable") || p.getName().equals("xBlazeTECH"))) return;
+			if (!p.hasPermission("xblaze.core.dev")) return;
 			e.setCancelled(true);
 			String targetplugin = msg.replaceAll("/xenable ", "");
 			try {
@@ -113,6 +108,5 @@ public class CommandInterpreter implements Listener {
 				p.sendMessage(err.getMessage());
 			}
 		}
-		*/
 	}
 }

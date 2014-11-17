@@ -13,11 +13,9 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 public class CommandInterceptor implements Listener {
 	
 	private NmsManager nmsman;
-	private BlazeCore plugin;
 	private DebugManager debugger;
 	
 	public CommandInterceptor(BlazeCore pl) {
-		this.plugin = pl;
 		this.nmsman = pl.nmsman;
 		this.debugger = pl.debugger;
 	}
@@ -48,7 +46,7 @@ public class CommandInterceptor implements Listener {
 		String cmd = args[0];
 		
 		if (cmd.equalsIgnoreCase("/debug")) {
-			if (p.hasPermission("xblaze.debug")) {
+			if (p.hasPermission("xblaze.core.dev")) {
 				if (debugger.isDebugging(p)) debugger.startDebugging(p);
 				if (!debugger.isDebugging(p)) debugger.stopDebugging(p);
 			} else {

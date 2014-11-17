@@ -10,6 +10,7 @@ public class EventHandlers implements Listener {
 
 	private BlazeCore plugin;
 	private xBlazeOS BlazeOS;
+	
 	public EventHandlers(BlazeCore plugin) {
 		this.plugin = plugin;
 		this.BlazeOS = plugin.BlazeOS;

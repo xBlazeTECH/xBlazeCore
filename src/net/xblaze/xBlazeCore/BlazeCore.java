@@ -1,21 +1,20 @@
 package net.xblaze.xBlazeCore;
 
-import java.util.HashMap;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-import net.xblaze.xBlazeCore.events.CommandInterceptor;
 import net.xblaze.xBlazeCore.api.nms.v1_7_R2.NmsManager;
-import net.xblaze.xBlazeCore.api.util.CommandManager;
+import net.xblaze.xBlazeCore.api.util.ConfigurationManager;
 import net.xblaze.xBlazeCore.api.util.ConsoleManager;
 import net.xblaze.xBlazeCore.api.util.DebugManager;
 import net.xblaze.xBlazeCore.api.util.InventoryManager;
 import net.xblaze.xBlazeCore.api.util.ItemManager;
-import net.xblaze.xBlazeCore.api.util.PlayerMetadataManager;
 
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.json.simple.parser.ParseException;
 
 public class BlazeCore extends JavaPlugin implements Listener {
 	
@@ -25,21 +24,33 @@ public class BlazeCore extends JavaPlugin implements Listener {
 	public ConsoleManager console = new ConsoleManager();
 	public DebugManager debugger = new DebugManager(this);
 	public InventoryManager invman = new InventoryManager();
-	public PlayerMetadataManager pmetaman = new PlayerMetadataManager();
 	public ItemManager itemman = new ItemManager();
-	public xBlazeOS BlazeOS = new xBlazeOS(this);
-	public HashMap<Player,Boolean> terminalusers = new HashMap<Player,Boolean>();
-	
+	public ConfigurationManager configman = new ConfigurationManager();
+		
 	/*
 	 * Create Local Instances.
 	 */	
     public NmsManager nmsman = new NmsManager();
+	public xBlazeOS BlazeOS = new xBlazeOS(this);
 		
 	@Override
 	public void onEnable() {
-		console.logInfo(this, " Plugin has been loaded sucessfully!");
+		configman.onPluginEnable(this);
 		Bukkit.getServer().getPluginManager().registerEvents(new EventHandlers(this), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new CommandInterpreter(this), this);
+		try {
+			configman.getString(this, "/data/config.json", "text");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		console.logInfo(this, " Plugin has been loaded sucessfully!");
 	}
 	
 	@Override
@@ -53,6 +64,10 @@ public class BlazeCore extends JavaPlugin implements Listener {
 	
 	public void enableSelf() {
 		Bukkit.getPluginManager().enablePlugin(this);
+	}
+	
+	public void firstRun() {
+		
 	}
 	
 }

@@ -3,15 +3,15 @@ package net.xblaze.xBlazeCore.api.nms.v1_7_R3;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.server.v1_7_R2.ChatSerializer;
-import net.minecraft.server.v1_7_R2.NBTTagCompound;
-import net.minecraft.server.v1_7_R2.PacketPlayOutChat;
+import net.minecraft.server.v1_7_R3.ChatSerializer;
+import net.minecraft.server.v1_7_R3.NBTTagCompound;
+import net.minecraft.server.v1_7_R3.PacketPlayOutChat;
 import net.xblaze.xBlazeCore.api.nms.GenericFancyMessage;
 import net.xblaze.xBlazeCore.api.nms.MessagePart;
 
 import org.bukkit.ChatColor;
-import org.bukkit.craftbukkit.v1_7_R2.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_7_R2.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_7_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_7_R3.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.json.JSONException;
