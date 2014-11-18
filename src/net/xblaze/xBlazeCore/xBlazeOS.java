@@ -9,7 +9,7 @@ import org.bukkit.metadata.FixedMetadataValue;
 public class xBlazeOS {
 	private BlazeCore plugin;
 	private String version;
-	public boolean enabled = false;
+	public boolean enabled = true;
 
 	public xBlazeOS (BlazeCore plugin) {
 		this.plugin = plugin;
