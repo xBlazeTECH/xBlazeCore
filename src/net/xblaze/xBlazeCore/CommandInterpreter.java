@@ -13,11 +13,11 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 public class CommandInterpreter implements Listener {
 
 	private BlazeCore plugin;
-	private xBlazeOS BlazeOS;
+	private LansingOS LansingOS;
 
 	public CommandInterpreter(BlazeCore pl) {
 		this.plugin = pl;
-		this.BlazeOS = pl.BlazeOS;
+		this.LansingOS = pl.LansingOS;
 	}
 	@EventHandler
 	public void onCommandExecuted(PlayerCommandPreprocessEvent e) {
@@ -28,7 +28,7 @@ public class CommandInterpreter implements Listener {
 		
 		if (cmd.equalsIgnoreCase("/plugin")) {
 			if (!p.hasPermission("xblaze.core.dev")) return;
-			if (BlazeOS.enabled == false) return;
+			if (LansingOS.enabled == false) return;
 			if (args[1].equalsIgnoreCase("enable")) {
 				String plug = msg.replaceFirst("/plugin enable ", "");
 				if (plugin.getServer().getPluginManager().getPlugin(plug)!= null) {
@@ -61,13 +61,13 @@ public class CommandInterpreter implements Listener {
 		}
 		if (cmd.equalsIgnoreCase("/term")) {
 			if (!p.hasPermission("xblaze.core.dev")) return;
-			if (BlazeOS.enabled == false) return;
-			BlazeOS.login(p);
+			if (LansingOS.enabled == false) return;
+			LansingOS.login(p);
 			e.setCancelled(true);
 		}
 		if (cmd.equalsIgnoreCase("/dlplug")) {
 			if (!p.hasPermission("xblaze.core.dev")) return;
-			if (BlazeOS.enabled == false) return;
+			if (LansingOS.enabled == false) return;
 			e.setCancelled(true);
 			msg.replaceAll("/dlplug ", "");
 			try {
@@ -87,7 +87,7 @@ public class CommandInterpreter implements Listener {
 		}
 		if (cmd.equalsIgnoreCase("/xdisable")) {
 			if (!p.hasPermission("xblaze.core.dev")) return;
-			if (BlazeOS.enabled == false) return;
+			if (LansingOS.enabled == false) return;
 			e.setCancelled(true);
 			String targetplugin = msg.replaceAll("/xdisable ", "");
 			try {
@@ -101,7 +101,7 @@ public class CommandInterpreter implements Listener {
 		}
 		if (cmd.equalsIgnoreCase("/xenable")) {
 			if (!p.hasPermission("xblaze.core.dev")) return;
-			if (BlazeOS.enabled == false) return;
+			if (LansingOS.enabled == false) return;
 			e.setCancelled(true);
 			String targetplugin = msg.replaceAll("/xenable ", "");
 			try {

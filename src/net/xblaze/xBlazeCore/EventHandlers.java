@@ -9,11 +9,11 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 public class EventHandlers implements Listener {
 
 	private BlazeCore plugin;
-	private xBlazeOS BlazeOS;
+	private LansingOS LansingOS;
 	
 	public EventHandlers(BlazeCore plugin) {
 		this.plugin = plugin;
-		this.BlazeOS = plugin.BlazeOS;
+		this.LansingOS = plugin.LansingOS;
 	}
 	
 	@EventHandler
@@ -27,7 +27,7 @@ public class EventHandlers implements Listener {
 				p.removeMetadata("term", plugin);
 				return;
 			} else {
-				BlazeOS.command(p, msg);
+				LansingOS.command(p, msg);
 			}
 		}
 	}

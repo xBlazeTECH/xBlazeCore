@@ -31,7 +31,7 @@ public class BlazeCore extends JavaPlugin implements Listener {
 	 * Create Local Instances.
 	 */	
     public NmsManager nmsman = new NmsManager();
-	public xBlazeOS BlazeOS = new xBlazeOS(this);
+	public LansingOS LansingOS = new LansingOS(this);
 		
 	@Override
 	public void onEnable() {
