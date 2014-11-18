@@ -25,7 +25,7 @@ public class xBlazeOS {
 		p.sendMessage(ChatColor.GRAY + "Using Username '" + p.getName() + "'");
 		p.sendMessage(ChatColor.GRAY + p.getName() + " has permission to login!");
 		p.sendMessage(ChatColor.GRAY + "Welcome to xBlazeOS " + this.getVersion() + "!");
-		p.sendMessage(ChatColor.GRAY + " * Documentation: https://xblaze.net/xBlazeOS");
+		p.sendMessage(ChatColor.GRAY + " * Documentation: https://lansing.io/xBlazeOS");
 		// Release Check Goes here! "New Release '1.0' is availible. \n Run /term to upgrade to it."
 		p.sendMessage(ChatColor.GRAY + "Host: " + p.getAddress().getHostName());
 		p.sendMessage(ChatColor.GRAY + "To Logout, please type 'logout'");
