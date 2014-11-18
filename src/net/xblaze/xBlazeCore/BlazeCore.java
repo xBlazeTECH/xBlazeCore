@@ -1,6 +1,7 @@
 package net.xblaze.xBlazeCore;
 
 import net.xblaze.xBlazeCore.api.nms.NmsManager;
+import net.xblaze.xBlazeCore.api.types.ConsoleMessageType;
 import net.xblaze.xBlazeCore.api.util.BungeeManager;
 import net.xblaze.xBlazeCore.api.util.ConsoleManager;
 import net.xblaze.xBlazeCore.api.util.DebugManager;
@@ -13,18 +14,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class BlazeCore extends JavaPlugin implements Listener {
 	
-	/*
-	 * Hook the xBlazeCore API.
-	 */
-	public ConsoleManager console = new ConsoleManager();
+	/* Hook the xBlazeCore API. */
+	public ConsoleManager console = new ConsoleManager(this);
 	public DebugManager debugger = new DebugManager(this);
 	public InventoryManager invman = new InventoryManager();
 	public ItemManager itemman = new ItemManager();
-		
-	/*
-	 * Expose the xBlazeCore API.
-	 * This will have more classes in the Future! ;)
-	 */
 	public BungeeManager bungeemanager = new BungeeManager(this);
 		
 	/*
@@ -52,24 +46,10 @@ public class BlazeCore extends JavaPlugin implements Listener {
 			e.printStackTrace();
 		}
 		*/
-		console.logInfo(this, " Plugin has been loaded sucessfully!");
+		console.log(ConsoleMessageType.INFO, "Enabled Successfully...");
 	}
 	
 	@Override
-	public void onDisable() {
-		console.logInfo(this, " Plugin has been disabled sucessfully!");
-	}
-	
-	public void disableSelf() {
-		Bukkit.getPluginManager().disablePlugin(this);
-	}
-	
-	public void enableSelf() {
-		Bukkit.getPluginManager().enablePlugin(this);
-	}
-	
-	public void firstRun() {
-		
-	}
+	public void onDisable() { console.log(ConsoleMessageType.INFO, "Disabled Successfully...");	}
 	
 }

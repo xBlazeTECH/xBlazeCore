@@ -22,13 +22,12 @@ public class LansingOS {
 	}
 	
 	public void login(Player p) {
-		p.sendMessage(ChatColor.GRAY + "===== Powering On LansingOS! =====");
-		p.sendMessage(ChatColor.GRAY + "'" + p.getName() + "' has root permissions!");
-		p.sendMessage(ChatColor.GRAY + "Welcome to xBlazeOS " + this.getVersion() + "!");
+		p.sendMessage(ChatColor.GRAY + "===== LansingOS " + this.getVersion() + " =====");
+		p.sendMessage(ChatColor.GRAY + "Welcome to LansingOS " + p.getName() + "!");
 		p.sendMessage(ChatColor.GRAY + " * Documentation: https://github.com/xBlazeTECH/xBlazeCore");
 		// Release Check Goes here! "New Release '1.0.1' is available. \n Run /term to upgrade to it."
 		p.sendMessage(ChatColor.GRAY + "Host: " + p.getAddress().getHostName());
-		p.sendMessage(ChatColor.GRAY + "To Logout, please type 'logout'");
+		p.sendMessage(ChatColor.GRAY + "To Logout and reenable chat, please type 'logout'");
 		p.sendMessage(ChatColor.GRAY + p.getName() + "@LansingOS:/# ");
 		p.setMetadata("term", new FixedMetadataValue(plugin, true));
 	}

@@ -1,37 +1,28 @@
 package net.xblaze.xBlazeCore.api.util;
 
+import net.xblaze.xBlazeCore.api.types.ConsoleMessageType;
+
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
 
 public class ConsoleManager {
 	
-	/**
-	 * Send an Informational Message to the Console.
-	 * @param p  Plugin that is sending the message
-	 * @param msg  Message to send
-	 */
-	public void logInfo(Plugin p, String msg) {
-		Bukkit.getLogger().info("==" + p.getName() + "==" + msg);
+	private Plugin pl;
+	
+	public ConsoleManager(Plugin provider) {
+		this.pl = provider;
 	}
 	
-	/**
-	 * Send a Warning Message to the Console.
-	 * @param p  Plugin that is sending message
-	 * @param msg  Message to send
-	 */
-	public void logWarning(Plugin p, String msg) {
-		Bukkit.getLogger().info("==" + p.getName() + " == " + msg);
-	}
-	
-	/**
-	 * Send a Fatal Error message to the Console.
-	 * @param p  Plugin that is sending message
-	 * @param msg  Message to send
-	 */
-	public void logSevere(Plugin p, String msg) {
-		Bukkit.getLogger().warning(" = " + p.getName() + " = Encountered an Unrecoverable Error and is shutting down!");
-		Bukkit.getLogger().severe(ChatColor.RED + " = " + p.getName() + " = " + msg);
-	}
-		
+	public void log(ConsoleMessageType type, String msg) {
+		switch (type) {
+		case INFO:
+			Bukkit.getLogger().info("==" + pl.getName() + "==" + msg);
+		case WARNING:
+			Bukkit.getLogger().warning("==" + pl.getName() + "==" + msg);			
+		case SEVERE:
+			Bukkit.getLogger().severe("==" + pl.getName() + "==" + msg);
+		default:
+			Bukkit.getLogger().info("==" + pl.getName() + "==" + msg);
+		}
+	}		
 }

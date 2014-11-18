@@ -1,6 +1,5 @@
 package net.xblaze.xBlazeCore.api.util;
 
-import net.xblaze.xBlazeCore.api.types.BroadcastType;
 import net.xblaze.xBlazeCore.api.types.MessageType;
 
 import org.bukkit.Bukkit;
@@ -11,13 +10,7 @@ public class ChatManager {
 	
 	public Boolean globalmute;
 	
-	/**
-	 * Broadcast a message to all users in the format of the BroadcastType
-	 * @param message  Message to be broadcasted
-	 * @param type  BroadcastType Format
-	 * @param override  Still broadcast even if global chat is disabled?
-	 */
-	public void broadcast(String message, BroadcastType type, boolean override) {
+	public void broadcast(String message, MessageType type, boolean override) {
 		if (override || (!globalmute)) {
 			switch (type) {
 			case WARNING:
@@ -40,9 +33,8 @@ public class ChatManager {
 			default:
 				break;
 			}
-		} else {
-			return;
 		}
+		return;
 	}
 	
 	/**
@@ -56,32 +48,28 @@ public class ChatManager {
 		if (override || (!globalmute)) {
 			switch (type) {
 			case WARNING:
-				player.sendMessage(ChatColor.DARK_RED + "!!! " + ChatColor.RED + message + ChatColor.DARK_RED + " !!!");
+				player.sendMessage(ChatColor.DARK_BLUE + "[" + ChatColor.GREEN + "x" + ChatColor.DARK_BLUE + "]" + ChatColor.RED + message);
 				break;
 			case CAUTION:
-				player.sendMessage(ChatColor.GOLD + "!!! " + ChatColor.RED + message + ChatColor.GOLD + " !!!");
+				player.sendMessage(ChatColor.DARK_BLUE + "[" + ChatColor.GREEN + "x" + ChatColor.DARK_BLUE + "]" + ChatColor.GOLD + message);
 				break;
 			case INFO:
-				player.sendMessage(ChatColor.DARK_BLUE + "!!! " + ChatColor.BLUE + message + ChatColor.DARK_BLUE + " !!!");
+				player.sendMessage(ChatColor.DARK_BLUE + "[" + ChatColor.GREEN + "x" + ChatColor.DARK_BLUE + "]" + ChatColor.DARK_BLUE + message);
 				break;
 			case SUCCESS:
-				player.sendMessage(ChatColor.DARK_GREEN + "!!! " + ChatColor.GREEN + message + ChatColor.DARK_GREEN + " !!!");
+				player.sendMessage(ChatColor.DARK_BLUE + "[" + ChatColor.GREEN + "x" + ChatColor.DARK_BLUE + "]" + ChatColor.DARK_GREEN + message);
 				break;
 			case ABSTRACT:
-				player.sendMessage(ChatColor.DARK_PURPLE + "!!! " + ChatColor.LIGHT_PURPLE + message + ChatColor.DARK_PURPLE + " !!!");
+				player.sendMessage(ChatColor.DARK_BLUE + "[" + ChatColor.GREEN + "x" + ChatColor.DARK_BLUE + "]" + ChatColor.LIGHT_PURPLE + message);
 				break;
 			case SUBTLE:
-				player.sendMessage(ChatColor.DARK_GRAY + "!!! " + ChatColor.GRAY + message + ChatColor.DARK_GRAY + " !!!");
+				player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GRAY + "x" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + message);
+				break;
 			default:
 				break;
 			}
-		} else {
-			return;
 		}
+		return;
 	}
-	
-	public void lineBreak(Player p) {
-		p.sendMessage(ChatColor.RESET + "");
-	}
-	
+	public void lineBreak(Player p) { p.sendMessage(ChatColor.RESET + ""); }
 }
