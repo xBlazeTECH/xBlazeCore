@@ -2,6 +2,9 @@ package net.xblaze.xBlazeCore;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -25,6 +28,7 @@ public class LansingOS {
 		p.sendMessage(ChatColor.GRAY + "===== LansingOS " + this.getVersion() + " =====");
 		p.sendMessage(ChatColor.GRAY + "Welcome to LansingOS " + p.getName() + "!");
 		p.sendMessage(ChatColor.GRAY + " * Documentation: https://github.com/xBlazeTECH/xBlazeCore");
+		p.sendMessage(ChatColor.GRAY + "** LansingOS currently only works on Debian hosted servers.");
 		// Release Check Goes here! "New Release '1.0.1' is available. \n Run /term to upgrade to it."
 		p.sendMessage(ChatColor.GRAY + "Host: " + p.getAddress().getHostName());
 		p.sendMessage(ChatColor.GRAY + "To Logout and reenable chat, please type 'logout'");
@@ -33,42 +37,32 @@ public class LansingOS {
 	}
 
 	public void command(Player p, String command) {
-		if (command.startsWith("dlplug")) {
-			command.replaceAll("dlplug ", "");
-			try {
-				Process proc;
-				proc = Runtime.getRuntime().exec("wget -N --directory-prefix=plugins " + command);
-				proc.waitFor();
-				BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-				String line = "";
-				while ((line = reader.readLine()) != null) {
-					p.sendMessage(ChatColor.GRAY + line);
-				}
-				p.sendMessage(ChatColor.GRAY + p.getName() + "@xBlazeOS:/# ");
-				return;
-			} catch (Exception e) {
-				p.sendMessage(e.getCause().getMessage());
-				p.sendMessage("Error Occured While Executing!");
-			}
-		} else if (command.startsWith("help")) {
+		p.sendMessage(ChatColor.GRAY + p.getName() + "@xBlazeOS:/# ");
+		if(command.equalsIgnoreCase("help")) {
 			p.sendMessage(ChatColor.GRAY + "Commands: dlplug,logout");
+			return;
 		} else {
-			Process proc;
-			try {
-				proc = Runtime.getRuntime().exec(command);
-				proc.waitFor();
-				BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-				String line = "";
-				while ((line = reader.readLine()) != null) {
-					p.sendMessage(ChatColor.GRAY + line);
-				}
-				p.sendMessage(ChatColor.GRAY + p.getName() + "@xBlazeOS:/# ");
-				return;
-			} catch (Exception e) {
-				p.sendMessage(e.getCause().getMessage());
-				p.sendMessage("Error Occured While Executing!");
+			for (String str : executeCmd(command)) {
+				p.sendMessage(ChatColor.GRAY + str);
 			}
 		}
-
+	}
+	
+	public List<String> executeCmd(String command) {
+		List<String> reply = new ArrayList<String>();
+		try {
+			Process proc;
+			proc = Runtime.getRuntime().exec(command);
+			proc.waitFor();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+			String line = "";
+			while ((line = reader.readLine()) != null) { 
+				reply.add(line); 
+			}
+		} catch (Exception e) {
+			reply.add(e.getCause().getMessage());
+			reply.add("Error Occured While Executing!");
+		}
+		return reply;
 	}
 }
