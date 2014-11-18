@@ -20,7 +20,7 @@ public class BlazeCore extends JavaPlugin implements Listener {
 	public DebugManager debugger = new DebugManager(this);
 	public InventoryManager invman = new InventoryManager();
 	public ItemManager itemman = new ItemManager();
-	
+		
 	/*
 	 * Expose the xBlazeCore API.
 	 * This will have more classes in the Future! ;)
