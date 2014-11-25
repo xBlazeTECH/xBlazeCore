@@ -15,5 +15,4 @@ public class PlayerManager {
 	public void message(Player p, String msg, MessageType type, boolean override) {
 		cm.sendMessage(p, msg, type, override);
 	}
-	
 }
