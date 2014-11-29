@@ -10,7 +10,7 @@
   </target>
   <!-- Compile the code -->
 	<target name="build" depends="pre" description="Compile the Source Code.">
-	  <javac srcdir="src/" destdir="bin/" includes="src/plugin.yml src/config.yml" debug="on" debuglevel="lines,vars,source" includeantruntime="false" encoding="Cp1252" classpathref="classpath">
+	  <javac srcdir="src/" destdir="bin/" debug="on" debuglevel="lines,vars,source" includeantruntime="false" encoding="Cp1252" classpathref="classpath">
       <classpath>
         <pathelement path="lib/" />
         <pathelement location="lib/spigot-1.7.9-R0.2-SNAPSHOT.jar" />
