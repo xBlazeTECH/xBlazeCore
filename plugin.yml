@@ -1,0 +1,4 @@
+name: xBlazeCore
+description: Hello
+main: net.xblaze.xBlazeCore.BlazeCore
+version: 1.3.2
