@@ -21,8 +21,6 @@ public class ConsoleManager {
 			Bukkit.getLogger().warning("==" + pl.getName() + "==" + msg);			
 		case SEVERE:
 			Bukkit.getLogger().severe("==" + pl.getName() + "==" + msg);
-		default:
-			Bukkit.getLogger().info("==" + pl.getName() + "==" + msg);
 		}
 	}		
 }
