@@ -40,7 +40,8 @@ public class Property {
      * @return JSONObject
      * @throws JSONException
      */
-    public static JSONObject toJSONObject(java.util.Properties properties) throws JSONException {
+    @SuppressWarnings("rawtypes")
+	public static JSONObject toJSONObject(java.util.Properties properties) throws JSONException {
         JSONObject jo = new JSONObject();
         if (properties != null && !properties.isEmpty()) {
             Enumeration enumProperties = properties.propertyNames();
@@ -59,7 +60,8 @@ public class Property {
      * @return java.util.Properties
      * @throws JSONException
      */
-    public static Properties toProperties(JSONObject jo)  throws JSONException {
+    @SuppressWarnings("rawtypes")
+	public static Properties toProperties(JSONObject jo)  throws JSONException {
         Properties  properties = new Properties();
         if (jo != null) {
             Iterator keys = jo.keys();
